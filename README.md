@@ -2,8 +2,9 @@
 ## **Team Members**
 - [Shubhang Bhatnagar](https://shubhangb97.github.io/)
 - [Aniket Bhatia](https://aniketb21.github.io/)
-- Vineet Kotariya
 - Chinmay Gurjarpadhye
+- Vineet Kotariya
+
 
 
 ## **Project**
