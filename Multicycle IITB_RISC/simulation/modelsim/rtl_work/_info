@@ -1,0 +1,543 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/home/shubhang/Microprocessors/Simulation/simulation/modelsim
+Ealu
+Z1 w1541793016
+Z2 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
+Z3 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z4 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+R0
+Z5 8/home/shubhang/Microprocessors/Simulation/ALU.vhd
+Z6 F/home/shubhang/Microprocessors/Simulation/ALU.vhd
+l0
+L8
+VzYW]mK0l=JDM99z7=Pa8?1
+!s100 macZGP@YeoUoJN0n6XobJ2
+Z7 OV;C;10.4d;61
+31
+Z8 !s110 1543316942
+!i10b 1
+Z9 !s108 1543316942.000000
+Z10 !s90 -reportprogress|300|-93|-work|work|/home/shubhang/Microprocessors/Simulation/ALU.vhd|
+Z11 !s107 /home/shubhang/Microprocessors/Simulation/ALU.vhd|
+!i113 1
+Z12 o-93 -work work
+Z13 tExplicit 1
+Aflames
+R2
+R3
+R4
+DEx4 work 3 alu 0 22 zYW]mK0l=JDM99z7=Pa8?1
+l26
+L18
+V1M3CGomUF?7AOOoomgHmG3
+!s100 Da?zDdm0UhU>N11C?6oY@3
+R7
+31
+R8
+!i10b 1
+R9
+R10
+R11
+!i113 1
+R12
+R13
+Eand_ir
+Z14 w1541426444
+R2
+R3
+R4
+R0
+Z15 8/home/shubhang/Microprocessors/Simulation/and_ir.vhd
+Z16 F/home/shubhang/Microprocessors/Simulation/and_ir.vhd
+l0
+L10
+V]m@d:^P7=z`DMf68lnMf=0
+!s100 AZ?IU0f63j0@iGii_:Z[Q2
+R7
+31
+Z17 !s110 1543316941
+!i10b 1
+Z18 !s108 1543316941.000000
+Z19 !s90 -reportprogress|300|-93|-work|work|/home/shubhang/Microprocessors/Simulation/and_ir.vhd|
+Z20 !s107 /home/shubhang/Microprocessors/Simulation/and_ir.vhd|
+!i113 1
+R12
+R13
+Abehave
+R2
+R3
+R4
+DEx4 work 6 and_ir 0 22 ]m@d:^P7=z`DMf68lnMf=0
+l17
+L16
+V9<CB35ZoP3lUWK<i_Wkkz2
+!s100 1dmh]73]oge66gk=<<HnS1
+R7
+31
+R17
+!i10b 1
+R18
+R19
+R20
+!i113 1
+R12
+R13
+Edut
+Z21 w1543304669
+R2
+R3
+R4
+R0
+Z22 8/home/shubhang/Microprocessors/Simulation/DUT.vhd
+Z23 F/home/shubhang/Microprocessors/Simulation/DUT.vhd
+l0
+L11
+VUAc7eL`nh3aVQ@62ZzS502
+!s100 8;;M<_KMcBS4>X]^g]SO71
+R7
+31
+R8
+!i10b 1
+R9
+Z24 !s90 -reportprogress|300|-93|-work|work|/home/shubhang/Microprocessors/Simulation/DUT.vhd|
+Z25 !s107 /home/shubhang/Microprocessors/Simulation/DUT.vhd|
+!i113 1
+R12
+R13
+Adutwrap
+R2
+R3
+R4
+DEx4 work 3 dut 0 22 UAc7eL`nh3aVQ@62ZzS502
+l146
+L16
+VVG>V0P0kH@<KgTG[zPUBC2
+!s100 Eld;LVlY8Cm1>7M:klYI60
+R7
+31
+R8
+!i10b 1
+R9
+R24
+R25
+!i113 1
+R12
+R13
+Efsm
+Z26 w1541827359
+R2
+R3
+R4
+R0
+Z27 8/home/shubhang/Microprocessors/Simulation/FSM.vhd
+Z28 F/home/shubhang/Microprocessors/Simulation/FSM.vhd
+l0
+L12
+VTS8Rh[X^XRSFSSLzVO=S@1
+!s100 ldSW73Z8VGa7[5oW5KPUR2
+R7
+31
+R17
+!i10b 1
+R18
+Z29 !s90 -reportprogress|300|-93|-work|work|/home/shubhang/Microprocessors/Simulation/FSM.vhd|
+Z30 !s107 /home/shubhang/Microprocessors/Simulation/FSM.vhd|
+!i113 1
+R12
+R13
+Afsm_prototype
+R2
+R3
+R4
+DEx4 work 3 fsm 0 22 TS8Rh[X^XRSFSSLzVO=S@1
+l35
+L23
+VCoIPNQk^zUN1YFio@C?Je3
+!s100 U9JYdlLMTH<X<gNolDGR^0
+R7
+31
+R17
+!i10b 1
+R18
+R29
+R30
+!i113 1
+R12
+R13
+Einstr_reg
+Z31 w1541426864
+R2
+R3
+R4
+R0
+Z32 8/home/shubhang/Microprocessors/Simulation/instr_reg.vhd
+Z33 F/home/shubhang/Microprocessors/Simulation/instr_reg.vhd
+l0
+L8
+V58:`^gg2_PPRkK^:0B=FU3
+!s100 0ZDg3<S4BzeR0L>bVPDYF2
+R7
+31
+R17
+!i10b 1
+R18
+Z34 !s90 -reportprogress|300|-93|-work|work|/home/shubhang/Microprocessors/Simulation/instr_reg.vhd|
+Z35 !s107 /home/shubhang/Microprocessors/Simulation/instr_reg.vhd|
+!i113 1
+R12
+R13
+Abehave
+R2
+R3
+R4
+DEx4 work 9 instr_reg 0 22 58:`^gg2_PPRkK^:0B=FU3
+l19
+L16
+VSc>^HRIH4>jAij_HRUYT^1
+!s100 S@DnG2kG[R3ZP?ZH7VLmK3
+R7
+31
+R17
+!i10b 1
+R18
+R34
+R35
+!i113 1
+R12
+R13
+Emem
+Z36 w1543316578
+R2
+R3
+R4
+R0
+Z37 8/home/shubhang/Microprocessors/Simulation/mem.vhd
+Z38 F/home/shubhang/Microprocessors/Simulation/mem.vhd
+l0
+L8
+V:b4akF;g:4?2V:P7S8ZDX3
+!s100 b2?QGV[0C??Gf=GLli`O<0
+R7
+31
+R8
+!i10b 1
+R18
+Z39 !s90 -reportprogress|300|-93|-work|work|/home/shubhang/Microprocessors/Simulation/mem.vhd|
+Z40 !s107 /home/shubhang/Microprocessors/Simulation/mem.vhd|
+!i113 1
+R12
+R13
+Amem_prototype
+R2
+R3
+R4
+DEx4 work 3 mem 0 22 :b4akF;g:4?2V:P7S8ZDX3
+l21
+L15
+VEl@P>;oeT?0F^7m2@JgHW1
+!s100 D3F=h:UIa;5N4`e:IDDb:3
+R7
+31
+R8
+!i10b 1
+R18
+R39
+R40
+!i113 1
+R12
+R13
+Epenc
+Z41 w1541429736
+R2
+R3
+R4
+R0
+Z42 8/home/shubhang/Microprocessors/Simulation/penc.vhd
+Z43 F/home/shubhang/Microprocessors/Simulation/penc.vhd
+l0
+L9
+V=A>?XVE=boWS8HHKh8lBU3
+!s100 4azdO7h^8AgeOL06V_Zn63
+R7
+31
+R8
+!i10b 1
+R9
+Z44 !s90 -reportprogress|300|-93|-work|work|/home/shubhang/Microprocessors/Simulation/penc.vhd|
+Z45 !s107 /home/shubhang/Microprocessors/Simulation/penc.vhd|
+!i113 1
+R12
+R13
+Abehave
+R2
+R3
+R4
+DEx4 work 4 penc 0 22 =A>?XVE=boWS8HHKh8lBU3
+l18
+L17
+VDFJlE[momjel>ARia5mmV3
+!s100 DbF4n3AJDQnaAn3KjYkl82
+R7
+31
+R8
+!i10b 1
+R9
+R44
+R45
+!i113 1
+R12
+R13
+Eregisterbank
+Z46 w1543316656
+R2
+R3
+R4
+R0
+Z47 8/home/shubhang/Microprocessors/Simulation/RegisterBank.vhd
+Z48 F/home/shubhang/Microprocessors/Simulation/RegisterBank.vhd
+l0
+L28
+V[5`Jol1aORR<;HM[W6cD`0
+!s100 f`@2JZe2ng[nd?:bmkBmU3
+R7
+31
+R17
+!i10b 1
+R18
+Z49 !s90 -reportprogress|300|-93|-work|work|/home/shubhang/Microprocessors/Simulation/RegisterBank.vhd|
+Z50 !s107 /home/shubhang/Microprocessors/Simulation/RegisterBank.vhd|
+!i113 1
+R12
+R13
+Abehavereg
+R2
+R3
+R4
+DEx4 work 12 registerbank 0 22 [5`Jol1aORR<;HM[W6cD`0
+l69
+L61
+VUK07b=]48[`0RX1=ecXO]1
+!s100 WPTMLZDiXNMODNaM0VTDZ2
+R7
+31
+R17
+!i10b 1
+R18
+R49
+R50
+!i113 1
+R12
+R13
+Ese10
+Z51 w1541426420
+R2
+R3
+R4
+R0
+Z52 8/home/shubhang/Microprocessors/Simulation/SE10.vhd
+Z53 F/home/shubhang/Microprocessors/Simulation/SE10.vhd
+l0
+L9
+Vz^P@48Lo?L9:4V`B=Ogz21
+!s100 `_`TRYS`W^^7aWY2;oj9M3
+R7
+31
+R17
+!i10b 1
+R18
+Z54 !s90 -reportprogress|300|-93|-work|work|/home/shubhang/Microprocessors/Simulation/SE10.vhd|
+Z55 !s107 /home/shubhang/Microprocessors/Simulation/SE10.vhd|
+!i113 1
+R12
+R13
+Abehave
+R2
+R3
+R4
+DEx4 work 4 se10 0 22 z^P@48Lo?L9:4V`B=Ogz21
+l15
+L14
+VXDh2;NES8<GelI5QUobmF2
+!s100 L9YMURS`n96RZOMbLiz8I0
+R7
+31
+R17
+!i10b 1
+R18
+R54
+R55
+!i113 1
+R12
+R13
+Ese7
+Z56 w1541429606
+R2
+R3
+R4
+R0
+Z57 8/home/shubhang/Microprocessors/Simulation/SE7.vhd
+Z58 F/home/shubhang/Microprocessors/Simulation/SE7.vhd
+l0
+L9
+VQLFkf:GS178:_S9c>f1HM3
+!s100 0[i=BcfSW]InSkcFc_X_l1
+R7
+31
+R8
+!i10b 1
+R9
+Z59 !s90 -reportprogress|300|-93|-work|work|/home/shubhang/Microprocessors/Simulation/SE7.vhd|
+Z60 !s107 /home/shubhang/Microprocessors/Simulation/SE7.vhd|
+!i113 1
+R12
+R13
+Abehave
+R2
+R3
+R4
+DEx4 work 3 se7 0 22 QLFkf:GS178:_S9c>f1HM3
+l15
+L14
+VB_ok:h2GBMe_15kbTzYVY1
+!s100 3zzX82g7>QEbfg7cdQz8j0
+R7
+31
+R8
+!i10b 1
+R9
+R59
+R60
+!i113 1
+R12
+R13
+Et1
+Z61 w1541430690
+R2
+R3
+R4
+R0
+Z62 8/home/shubhang/Microprocessors/Simulation/t1.vhd
+Z63 F/home/shubhang/Microprocessors/Simulation/t1.vhd
+l0
+L10
+V`GQm:@_fL2Ma`6jl>iYKZ1
+!s100 G3L_`=VWII]9johdERXI;3
+R7
+31
+R8
+!i10b 1
+R9
+Z64 !s90 -reportprogress|300|-93|-work|work|/home/shubhang/Microprocessors/Simulation/t1.vhd|
+Z65 !s107 /home/shubhang/Microprocessors/Simulation/t1.vhd|
+!i113 1
+R12
+R13
+Abehave
+R2
+R3
+R4
+DEx4 work 2 t1 0 22 `GQm:@_fL2Ma`6jl>iYKZ1
+l22
+L18
+VOW7Yn0Q=fGaa1Z50DgNO01
+!s100 Jn36FS:4?z@NzTU1o0>X73
+R7
+31
+R8
+!i10b 1
+R9
+R64
+R65
+!i113 1
+R12
+R13
+Et2
+Z66 w1541430722
+R2
+R3
+R4
+R0
+Z67 8/home/shubhang/Microprocessors/Simulation/t2.vhd
+Z68 F/home/shubhang/Microprocessors/Simulation/t2.vhd
+l0
+L10
+VhicO]KM`V03dO]goYSJE@0
+!s100 =<<A[H<J7>3^>Sm2P9Bmj2
+R7
+31
+R8
+!i10b 1
+R9
+Z69 !s90 -reportprogress|300|-93|-work|work|/home/shubhang/Microprocessors/Simulation/t2.vhd|
+Z70 !s107 /home/shubhang/Microprocessors/Simulation/t2.vhd|
+!i113 1
+R12
+R13
+Abehave
+R2
+R3
+R4
+DEx4 work 2 t2 0 22 hicO]KM`V03dO]goYSJE@0
+l22
+L18
+V^ViMH2VNY6`C<TR^71Yz@1
+!s100 6[O3j[QzgBSYeK[?=GnLa2
+R7
+31
+R8
+!i10b 1
+R9
+R69
+R70
+!i113 1
+R12
+R13
+Ezp
+Z71 w1541426520
+R2
+R3
+R4
+R0
+Z72 8/home/shubhang/Microprocessors/Simulation/zp.vhd
+Z73 F/home/shubhang/Microprocessors/Simulation/zp.vhd
+l0
+L10
+VRQOA^RJY2lGi3HTU4Mk`F0
+!s100 Je=7AZ@6HZbO18h76Q_La2
+R7
+31
+R17
+!i10b 1
+R18
+Z74 !s90 -reportprogress|300|-93|-work|work|/home/shubhang/Microprocessors/Simulation/zp.vhd|
+Z75 !s107 /home/shubhang/Microprocessors/Simulation/zp.vhd|
+!i113 1
+R12
+R13
+Abehave
+R2
+R3
+R4
+DEx4 work 2 zp 0 22 RQOA^RJY2lGi3HTU4Mk`F0
+l16
+L15
+VD8MFhHfYADef;1T5DkaAE3
+!s100 :U9G19mF65S7FDhmdb1zj3
+R7
+31
+R17
+!i10b 1
+R18
+R74
+R75
+!i113 1
+R12
+R13

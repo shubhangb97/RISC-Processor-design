@@ -1,0 +1,278 @@
+# do alu2_run_msim_rtl_vhdl.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim ALTERA vmap 10.4d Lib Mapping Utility 2015.12 Dec 30 2015
+# vmap work rtl_work 
+# Copying /home/shubhang/altera_lite/16.0/modelsim_ase/linuxaloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# 
+# vcom -93 -work work {/home/shubhang/Microprocessors/project2/Micro-Project 2/branch_null.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 18:08:51 on Dec 02,2018
+# vcom -reportprogress 300 -93 -work work /home/shubhang/Microprocessors/project2/Micro-Project 2/branch_null.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity branch_null
+# -- Compiling architecture behave of branch_null
+# End time: 18:08:51 on Dec 02,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {/home/shubhang/Microprocessors/project2/Micro-Project 2/RegisterBank.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 18:08:51 on Dec 02,2018
+# vcom -reportprogress 300 -93 -work work /home/shubhang/Microprocessors/project2/Micro-Project 2/RegisterBank.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity RegisterBank
+# -- Compiling architecture behaveReg of RegisterBank
+# End time: 18:08:51 on Dec 02,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {/home/shubhang/Microprocessors/project2/Micro-Project 2/PC.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 18:08:51 on Dec 02,2018
+# vcom -reportprogress 300 -93 -work work /home/shubhang/Microprocessors/project2/Micro-Project 2/PC.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity PC
+# -- Compiling architecture behave of PC
+# End time: 18:08:51 on Dec 02,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {/home/shubhang/Microprocessors/project2/Micro-Project 2/InstrFetch.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 18:08:51 on Dec 02,2018
+# vcom -reportprogress 300 -93 -work work /home/shubhang/Microprocessors/project2/Micro-Project 2/InstrFetch.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity InstrFetch
+# -- Compiling architecture behave of InstrFetch
+# End time: 18:08:51 on Dec 02,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {/home/shubhang/Microprocessors/project2/Micro-Project 2/mem1.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 18:08:51 on Dec 02,2018
+# vcom -reportprogress 300 -93 -work work /home/shubhang/Microprocessors/project2/Micro-Project 2/mem1.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity mem1
+# -- Compiling architecture mem_prototype of mem1
+# End time: 18:08:51 on Dec 02,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {/home/shubhang/Microprocessors/project2/Micro-Project 2/and_ir.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 18:08:51 on Dec 02,2018
+# vcom -reportprogress 300 -93 -work work /home/shubhang/Microprocessors/project2/Micro-Project 2/and_ir.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity and_ir
+# -- Compiling architecture behave of and_ir
+# End time: 18:08:51 on Dec 02,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {/home/shubhang/Microprocessors/project2/Micro-Project 2/penc.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 18:08:51 on Dec 02,2018
+# vcom -reportprogress 300 -93 -work work /home/shubhang/Microprocessors/project2/Micro-Project 2/penc.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity penc
+# -- Compiling architecture behave of penc
+# End time: 18:08:51 on Dec 02,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {/home/shubhang/Microprocessors/project2/Micro-Project 2/i3reg.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 18:08:51 on Dec 02,2018
+# vcom -reportprogress 300 -93 -work work /home/shubhang/Microprocessors/project2/Micro-Project 2/i3reg.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity i3reg
+# -- Compiling architecture behave of i3reg
+# End time: 18:08:52 on Dec 02,2018, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {/home/shubhang/Microprocessors/project2/Micro-Project 2/zp.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 18:08:52 on Dec 02,2018
+# vcom -reportprogress 300 -93 -work work /home/shubhang/Microprocessors/project2/Micro-Project 2/zp.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity zp
+# -- Compiling architecture behave of zp
+# End time: 18:08:52 on Dec 02,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {/home/shubhang/Microprocessors/project2/Micro-Project 2/stall_control.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 18:08:52 on Dec 02,2018
+# vcom -reportprogress 300 -93 -work work /home/shubhang/Microprocessors/project2/Micro-Project 2/stall_control.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity stall_control
+# -- Compiling architecture behave of stall_control
+# End time: 18:08:52 on Dec 02,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {/home/shubhang/Microprocessors/project2/Micro-Project 2/SE10.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 18:08:52 on Dec 02,2018
+# vcom -reportprogress 300 -93 -work work /home/shubhang/Microprocessors/project2/Micro-Project 2/SE10.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity SE10
+# -- Compiling architecture behave of SE10
+# End time: 18:08:52 on Dec 02,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {/home/shubhang/Microprocessors/project2/Micro-Project 2/SE7.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 18:08:52 on Dec 02,2018
+# vcom -reportprogress 300 -93 -work work /home/shubhang/Microprocessors/project2/Micro-Project 2/SE7.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity SE7
+# -- Compiling architecture behave of SE7
+# End time: 18:08:52 on Dec 02,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {/home/shubhang/Microprocessors/project2/Micro-Project 2/mem2.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 18:08:52 on Dec 02,2018
+# vcom -reportprogress 300 -93 -work work /home/shubhang/Microprocessors/project2/Micro-Project 2/mem2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity mem2
+# -- Compiling architecture mem_prototype of mem2
+# End time: 18:08:52 on Dec 02,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {/home/shubhang/Microprocessors/project2/Micro-Project 2/i4reg.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 18:08:52 on Dec 02,2018
+# vcom -reportprogress 300 -93 -work work /home/shubhang/Microprocessors/project2/Micro-Project 2/i4reg.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity i4reg
+# -- Compiling architecture behave of i4reg
+# End time: 18:08:52 on Dec 02,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {/home/shubhang/Microprocessors/project2/Micro-Project 2/i2reg.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 18:08:52 on Dec 02,2018
+# vcom -reportprogress 300 -93 -work work /home/shubhang/Microprocessors/project2/Micro-Project 2/i2reg.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity i2reg
+# -- Compiling architecture behave of i2reg
+# End time: 18:08:52 on Dec 02,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {/home/shubhang/Microprocessors/project2/Micro-Project 2/i1reg.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 18:08:52 on Dec 02,2018
+# vcom -reportprogress 300 -93 -work work /home/shubhang/Microprocessors/project2/Micro-Project 2/i1reg.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity i1reg
+# -- Compiling architecture behave of i1reg
+# End time: 18:08:52 on Dec 02,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {/home/shubhang/Microprocessors/project2/Micro-Project 2/data_forward_control.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 18:08:52 on Dec 02,2018
+# vcom -reportprogress 300 -93 -work work /home/shubhang/Microprocessors/project2/Micro-Project 2/data_forward_control.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity data_forward_control
+# -- Compiling architecture behave of data_forward_control
+# End time: 18:08:52 on Dec 02,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {/home/shubhang/Microprocessors/project2/Micro-Project 2/alu2.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 18:08:52 on Dec 02,2018
+# vcom -reportprogress 300 -93 -work work /home/shubhang/Microprocessors/project2/Micro-Project 2/alu2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity alu2
+# -- Compiling architecture mockingjay of alu2
+# End time: 18:08:52 on Dec 02,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {/home/shubhang/Microprocessors/project2/Micro-Project 2/beq_comp.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 18:08:52 on Dec 02,2018
+# vcom -reportprogress 300 -93 -work work /home/shubhang/Microprocessors/project2/Micro-Project 2/beq_comp.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity beq_comp
+# -- Compiling architecture katniss of beq_comp
+# End time: 18:08:52 on Dec 02,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {/home/shubhang/Microprocessors/project2/Micro-Project 2/i5reg.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 18:08:52 on Dec 02,2018
+# vcom -reportprogress 300 -93 -work work /home/shubhang/Microprocessors/project2/Micro-Project 2/i5reg.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity i5reg
+# -- Compiling architecture crucio of i5reg
+# End time: 18:08:52 on Dec 02,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {/home/shubhang/Microprocessors/project2/Micro-Project 2/inst_dec.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 18:08:52 on Dec 02,2018
+# vcom -reportprogress 300 -93 -work work /home/shubhang/Microprocessors/project2/Micro-Project 2/inst_dec.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity inst_dec
+# -- Compiling architecture katniss of inst_dec
+# End time: 18:08:53 on Dec 02,2018, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {/home/shubhang/Microprocessors/project2/Micro-Project 2/DUT.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 18:08:53 on Dec 02,2018
+# vcom -reportprogress 300 -93 -work work /home/shubhang/Microprocessors/project2/Micro-Project 2/DUT.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity DUT
+# -- Compiling architecture behave of DUT
+# End time: 18:08:53 on Dec 02,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# 
+# stdin: <EOF>

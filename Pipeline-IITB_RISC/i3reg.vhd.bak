@@ -1,0 +1,126 @@
+library std;
+use std.standard.all;
+
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity i3reg is
+port(clk:in std_logic;
+      --opcode_in:in std_logic_vector(6 downto 0);
+      pc_in:in unsigned(15 downto 0);
+      valid_in:in std_logic;
+      opcode_in:in std_logic_vector(5 downto 0);
+
+      i5_W2_in:in unsigned(15 downto 0);
+      i4_W_in:in unsigned(15 downto 0);
+      zp_out:in unsigned(15 downto 0);
+      mem2_d1_out:in unsigned(15 downto 0);
+      alu2_out:in unsigned(15 downto 0);
+      rf_d1:in unsigned(15 downto 0);
+      rf_d2:in unsigned(15 downto 0);
+
+      dest_in:in unsigned(15 downto 0);
+
+      se10_out:in unsigned(15 downto 0);
+      se7_out:in unsigned(15 downto 0);
+      imm9_in:in unsigned(8 downto 0);
+
+      --zp_i3_in:in std_logic_vector(8 downto 0);-- for the data
+
+      EX_cont:in std_logic_vector(8 downto 0);--input controls
+      MEM_cont:in std_logic_vector(2 downto 0);
+      WB_cont:in std_logic;
+
+      stall:in std_logic;
+      invalidate:in std_logic;
+      N0,N1,N2,N3,N4:in std_logic;--controls inside
+      P0,P1,P2,P3,P4:in std_logic;
+      se10_control:std_logic;
+      se7_control:std_logic;
+
+      A_out:out unsigned(15 downto 0);
+      B_out:out unsigned(15 downto 0);
+      i3_dest_out:std_logic_vector(2 downto 0);
+      i3_pc_out:out unsigned(15 downto 0);
+      se16:out unsigned(15 downto 0);
+      zp_i3:out std_logic_vector(8 downto 0);
+
+      i3_opcode_out:out std_logic_vector(5 downto 0);
+
+       --controls
+      EX_cont_out:out std_logic_vector(8 downto 0);
+      MEM_cont_out:out std_logic_vector(2 downto 0);
+      WB_cont_out:out std_logic;
+      valid_out:out std_logic);
+     --inter1reg_in : in std_logic_vector (32 downto 0);
+     --inter1reg_out:out std_logic_vector(32 downto 0));
+end entity;
+
+architecture behave of i3reg is
+
+--signal inter1reg:std_logic_vector(32 downto 0);
+
+begin
+  process(clk,i5_W2_in,i4_W_in,zp_out,mem2_d1_out,alu2_out,rf_d1,rf_d2)
+    begin
+      if(rising_edge(clk) and stall='0') then
+
+        if(N0='1') then
+          A_out<=alu2_out;
+        elsif(N1='1') then
+          A_out<=zp_out;
+        elsif(N2='1') then
+          A_out<=i4_W_in;
+        elsif(N3='1')
+        A_out<=mem2_d1_out;
+      elsif(N4='1') then
+        A_out<=i5_W2_in;
+      else
+        A_out<=rf_d1;
+        end if;
+
+        if(P0='1') then
+          B_out<=alu2_out;
+        elsif(P1='1') then
+          B_out<=zp;
+        elsif(P2='1') then
+          B_out<=i4_W_in;
+        elsif(P3='1')
+        B_out<=mem2_d1_out;
+      elsif(P4='1') then
+        B_out<=i5_W2_in;
+      else
+        B_out<=rf_d2;
+        end if;
+
+        if(se10_control='1')
+          se16<=se10_out;
+        elsif(se7_control='1')
+          se16<=se7_out;
+        else
+          se16<=(others=>'0')
+        end if;
+
+
+        zp_i3<=imm9_in;
+        i3_dest_out<=dest_in;
+
+
+        --imm9<=ir(8 downto 0);
+        i3_pc_out<=pc_in;
+        --zp<=ir(8 downto 0);
+
+        i3_opcode_out<=opcode_in;
+
+        EX_cont_out<=EX_cont;
+        MEM_cont_out<=MEM_cont;
+        WB_cont_out<=WB_cont;
+        if(invalidate='1')
+          valid_out<='0';
+        else
+          valid_out<=valid_in;
+        end if;
+      end if;
+    end process;
+end behave;

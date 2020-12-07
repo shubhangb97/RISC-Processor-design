@@ -1,0 +1,16 @@
+Fitter Status : Successful - Sun Dec  2 16:32:36 2018
+Quartus Prime Version : 16.0.0 Build 211 04/27/2016 SJ Lite Edition
+Revision Name : alu2
+Top-level Entity Name : DUT
+Family : Cyclone IV E
+Device : EP4CE22F17C6
+Timing Models : Final
+Total logic elements : 530 / 22,320 ( 2 % )
+    Total combinational functions : 490 / 22,320 ( 2 % )
+    Dedicated logic registers : 324 / 22,320 ( 1 % )
+Total registers : 324
+Total pins : 10 / 154 ( 6 % )
+Total virtual pins : 0
+Total memory bits : 1,024 / 608,256 ( < 1 % )
+Embedded Multiplier 9-bit elements : 0 / 132 ( 0 % )
+Total PLLs : 0 / 4 ( 0 % )

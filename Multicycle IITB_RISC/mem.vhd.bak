@@ -1,0 +1,33 @@
+entity mem is
+  port(t2,t1,r7:in unsigned(15 downto 0);
+      clk, mem_RD, mem_WR,mem_a_control:in std_logic;
+--,mem_d_control:in std_logic;
+      mem_d_out:out std_logic_vector(15 downto 0));-- r7 is pc
+end entity;
+
+architecture mem_prototype of mem is
+
+-----------Define variables/signals----------------------
+	--signal current_state: FSMstate;
+  type mem_sto is array (0 to 16) of std_logic_vector(15 downto 0);
+  signal mem: mem_sto;
+begin
+process(clk,mem_RD,mem_WR,mem_a_control)
+begin
+if(mem_WR='1' and rising_edge(clk)) then
+			--if(mem_d_control='0') then --only 1 case
+  mem(to_integer(mem_a))<=t2;
+				--else
+  				--mem(to_integer(mem_a))<=r7;
+				--end if;
+end if; -- latch here
+if(mem_a_control='0' and mem_RD='1')
+mem_d_out<=mem(to_integer(t1));
+elsif(mem_a_control='1' and mem_RD='1')
+mem_d_out<=mem(to_integer(r7));
+else
+mem_d_out<=(others=>'0'); -- to prevent a latch here
+end if;
+end process;
+end mem_prototype;
+s

@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Sun Dec  2 16:31:48 2018
+Quartus Prime Version : 16.0.0 Build 211 04/27/2016 SJ Lite Edition
+Revision Name : alu2
+Top-level Entity Name : DUT
+Family : Cyclone IV E
+Total logic elements : 665
+    Total combinational functions : 474
+    Dedicated logic registers : 324
+Total registers : 324
+Total pins : 10
+Total virtual pins : 0
+Total memory bits : 1,024
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0

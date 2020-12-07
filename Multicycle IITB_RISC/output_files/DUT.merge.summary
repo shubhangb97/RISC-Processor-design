@@ -1,0 +1,14 @@
+Partition Merge Status : Successful - Tue Nov 27 02:32:44 2018
+Quartus Prime Version : 16.0.0 Build 211 04/27/2016 SJ Lite Edition
+Revision Name : DUT
+Top-level Entity Name : DUT
+Family : Cyclone IV E
+Total logic elements : 1,179
+    Total combinational functions : 855
+    Dedicated logic registers : 484
+Total registers : 484
+Total pins : 10
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0

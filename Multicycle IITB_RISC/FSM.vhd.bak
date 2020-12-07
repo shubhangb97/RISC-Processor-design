@@ -1,0 +1,1419 @@
+--Last update on 4th November 6.45pm
+library std;
+use std.standard.all;
+
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+--type FSMstate is {S1,S2,S3,S4,S5,S6,S7,S8,S9,S10,S11,S12,S13,S14,S15,S16,S17};
+
+
+entity FSM is
+port (clk, reset, nor_ir, alu_z, carry, zero: in std_logic;
+			ir : in std_logic_vector (15 downto 0);
+			--t1_in0, t1_in1, t1_out0, t1_out1, t2_in0, t2_in1, t2_out0, t2_out1: out std_logic;
+			t1_in0, t1_in1, t2_in0, t2_in1: out std_logic;
+			c_en, z_en, alu_op0, alu_op1, alu_a_in0, alu_a_in1, alu_b_in0, alu_b_in1 :out std_logic;
+			rf_a1_in0, rf_a1_in1, rf_a2_in0, rf_a2_in1, rf_a3_in, rf_d3_in0, rf_d3_in1, rf_WR: out std_logic;
+			mem_WR, mem_RD, mem_a_dest, pe_en, pc_out0, pc_out1, ir_0: out std_logic);
+end entity;
+
+
+architecture FSM_prototype of FSM is
+
+type FSMstate is (S0,S1,S2,S3,S4,S5,S6,S7,S8,S9,S10,S11,S12,S13,S14,S15,S16,S17);
+
+-----------Define variables/signals----------------------
+
+	signal current_state: FSMstate;
+	signal next_state: FSMstate;
+
+---------------------------------------------------------
+-----------Declare components----------------------------
+---------------------------------------------------------
+begin
+
+	output_logic: process(clk,current_state, ir)
+	begin
+		case current_state is
+			when S0 =>
+				--t1 signals
+				--NONE, NONE
+				t1_in0  <= '0';
+				t1_in1  <= '0';
+				--t1_out0 <= '0';
+				--t1_out1 <= '0';
+				---------------
+				--t2 signals
+				--NONE, NONE
+				t2_in0  <= '0';
+				t2_in1  <= '0';
+				--t2_out0 <= '0';
+				--t2_out1 <= '0';
+				---------------
+				--Flags enable
+				c_en <= '0';
+				z_en <= '0';
+				---------------
+				--ALU operation
+				--NONE
+				alu_op0 <= '0';
+				alu_op1 <= '0';
+				---------------
+				--ALU control
+				-- (NONE), (NONE)
+				alu_a_in0 <= '0';
+				alu_a_in1 <= '0';
+				alu_b_in0 <= '1';
+				alu_b_in1 <= '1';
+				---------------
+				--ALU output
+				--alu_pc <= '0';
+				--alu_t1 <= '0';
+				---------------
+				--Register Bank
+				--No register read
+				rf_a1_in0 <='0';
+				rf_a1_in1 <='0';
+				rf_a2_in0 <='0';
+				rf_a2_in1 <='0';
+				-- No register write
+				rf_WR     <='0';
+				rf_a3_in  <='0'; --don't care
+				rf_d3_in0 <='0'; --don't care
+				rf_d3_in1 <='0'; --don't care
+				---------------
+				--Program Counter                       --Check
+				--(PC -> mem_a, alu_a),(alu_out->PC)    --Check
+				pc_out0 <='0';			--Check
+				pc_out1 <='1';			--Check
+				--pc_out2 <='1';		--Check
+				---------------
+				--Memory Access
+				--(NONE)
+				mem_RD <= '0';
+				mem_WR <= '0';
+				mem_a_dest <= '0'; --Don't care
+				---------------
+				--Priority Encoder
+				pe_en <= '0';
+				---------------
+				--Instr. Register
+				--No ; Other bit is pe_en
+				ir_0 <= '0';
+				---------------
+-------------------------S1-----------------------------
+			when S1 =>
+				--t1 signals
+				--NONE, NONE
+				t1_in0  <= '0';
+				t1_in1  <= '0';
+				--t1_out0 <= '0';
+				--t1_out1 <= '0';
+				---------------
+				--t2 signals
+				--NONE, NONE
+				t2_in0  <= '0';
+				t2_in1  <= '0';
+				--t2_out0 <= '0';
+				--t2_out1 <= '0';
+				---------------
+				--Flags enable
+				c_en <= '0';
+				z_en <= '0';
+				---------------
+				--ALU operation
+				--ADD
+				alu_op0 <= '1';
+				alu_op1 <= '1';
+				---------------
+				--ALU control
+				-- (PC -> alu_a), (+1 -> alu_b)
+				alu_a_in0 <= '1';
+				alu_a_in1 <= '0';
+				alu_b_in0 <= '1';
+				alu_b_in1 <= '1';
+				---------------
+				--ALU output
+				--alu_pc <= '1';
+				--alu_t1 <= '0';
+				---------------
+				--Register Bank
+				--No register read
+				rf_a1_in0 <='0';
+				rf_a1_in1 <='0';
+				rf_a2_in0 <='0';
+				rf_a2_in1 <='0';
+				-- No register write
+				rf_WR     <='0';
+				rf_a3_in  <='0'; --don't care
+				rf_d3_in0 <='0'; --don't care
+				rf_d3_in1 <='0'; --don't care
+				---------------
+				--Program Counter
+				--(PC -> mem_a, alu_a),(alu_out->PC)
+				pc_out0 <='0';
+				pc_out1 <='1';
+				--pc_out2 <='1';
+				---------------
+				--Memory Access
+				--(mem_d -> IR), (PC -> mem_a)
+				mem_RD <= '1';
+				mem_WR <= '0';
+				mem_a_dest <= '0';
+				---------------
+				--Priority Encoder
+				pe_en <= '0';
+				---------------
+				--Instr. Register
+				--mem_d -> IR ; Other bit is pe_en
+				ir_0 <= '1';
+				---------------
+-------------------------S2-----------------------------
+			when S2 =>
+				--t1 signals
+				--(rf-d1 -> t1), NONE
+				t1_in0  <= '1';
+				t1_in1  <= '0';
+				--t1_out0 <= '0';
+				--t1_out1 <= '0';
+				---------------
+				--t2 signals
+				--(rf-d2 -> t2), NONE
+				t2_in0  <= '1';
+				t2_in1  <= '0';
+				--t2_out0 <= '0';
+				--t2_out1 <= '0';
+				---------------
+				--Flags enable
+				c_en <= '0';
+				z_en <= '0';
+				---------------
+				--ALU operation
+				--NONE
+				alu_op0 <= '0';
+				alu_op1 <= '0';
+				---------------
+				--ALU control
+				-- (NONE), (NONE)
+				alu_a_in0 <= '0';
+				alu_a_in1 <= '0';
+				alu_b_in0 <= '1';
+				alu_b_in1 <= '1';
+				---------------
+				--ALU output
+				--alu_pc <= '0';
+				--alu_t1 <= '0';
+				---------------
+				--Register Bank
+				--register read
+				if ((ir(15 downto 12) ="0101") or (ir(15 downto 12) ="1100"))  then --SW or BEQ
+					--(IR(6-8) -> rf-a1), (IR(9-11) -> rf-a2)
+					rf_a1_in0 <='1';
+					rf_a1_in1 <='0';
+					rf_a2_in0 <='0';
+					rf_a2_in1 <='1';
+				elsif ((ir(15 downto 12) ="0110") or (ir(15 downto 12) ="0111")) then --LM or SM
+					--(IR(9-11) -> rf-a1), (IR(3-5) -> rf-a2)
+					rf_a1_in0 <='0';
+					rf_a1_in1 <='1';
+					rf_a2_in0 <='1';
+					rf_a2_in1 <='0';
+				else
+					--(IR(6-8) -> rf-a1), (IR(3-5) -> rf-a2) -- All other operations
+					rf_a1_in0 <='1';
+					rf_a1_in1 <='0';
+					rf_a2_in0 <='1';
+					rf_a2_in1 <='0';
+				end if;
+				-- No register write
+				rf_WR     <='0';
+				rf_a3_in  <='0'; --don't care
+				rf_d3_in0 <='0'; --don't care
+				rf_d3_in1 <='0'; --don't care
+				---------------
+				--Program Counter
+				--(NONE),(NONE)
+				pc_out0 <='0';
+				pc_out1 <='0';
+				--pc_out2 <='0';
+				---------------
+				--Memory Access
+				--(NONE)
+				mem_RD <= '0';
+				mem_WR <= '0';
+				mem_a_dest <= '0'; --Don't care
+				---------------
+				--Priority Encoder
+				pe_en <= '0';
+				---------------
+				--Instr. Register
+				--No ; Other bit is pe_en
+				ir_0 <= '0';
+				---------------
+-------------------------S3-----------------------------
+			when S3 =>
+				--t1 signals
+				--(alu_out -> t1), (t1 -> alu_a)
+				t1_in0  <= '0';
+				t1_in1  <= '1';
+				--t1_out0 <= '0';
+				--t1_out1 <= '1';
+				---------------
+				--t2 signals
+				--NONE, (t2 -> alu_b)
+				t2_in0  <= '0';
+				t2_in1  <= '0';
+				--t2_out0 <= '0';
+				--t2_out1 <= '1';
+				---------------
+				--Flags enable
+				if (ir(15 downto 12)="0000") then
+					c_en <= '1';
+					z_en <= '1';
+				else
+					c_en <= '0';
+					z_en <= '1';
+				end if;
+				---------------
+				--ALU operation
+				if (ir(15 downto 12)="0000") then
+					--ADD
+					alu_op0 <= '1';
+					alu_op1 <= '1';
+				else
+					--NAND
+					alu_op0 <= '0';
+					alu_op1 <= '1';
+				end if;
+				---------------
+				--ALU control
+				-- (t1 -> alu_a), (t2 -> alu_b)
+				alu_a_in0 <= '0';
+				alu_a_in1 <= '1';
+				alu_b_in0 <= '0';
+				alu_b_in1 <= '1';
+				---------------
+				--ALU output
+				--alu_pc <= '0';
+				--alu_t1 <= '1';
+				---------------
+				--Register Bank
+				--No register read
+				rf_a1_in0 <='0';
+				rf_a1_in1 <='0';
+				rf_a2_in0 <='0';
+				rf_a2_in1 <='0';
+				-- No register write
+				rf_WR     <='0';
+				rf_a3_in  <='0'; --don't care
+				rf_d3_in0 <='0'; --don't care
+				rf_d3_in1 <='0'; --don't care
+				---------------
+				--Program Counter
+				--(NONE),(NONE)
+				pc_out0 <='0';
+				pc_out1 <='0';
+				--pc_out2 <='0';
+				---------------
+				--Memory Access
+				--(NONE)
+				mem_RD <= '0';
+				mem_WR <= '0';
+				mem_a_dest <= '0'; --Don't care
+				---------------
+				--Priority Encoder
+				pe_en <= '0';
+				---------------
+				--Instr. Register
+				--No ; Other bit is pe_en
+				ir_0 <= '0';
+				---------------
+-------------------------S4-----------------------------
+			when S4 =>
+				--t1 signals
+				--NONE, (t1 -> rf-d3)
+				t1_in0  <= '0';
+				t1_in1  <= '0';
+				--t1_out0 <= '1';
+				--t1_out1 <= '0';
+				---------------
+				--t2 signals
+				--NONE, NONE
+				t2_in0  <= '0';
+				t2_in1  <= '0';
+				--t2_out0 <= '0';
+				--t2_out1 <= '0';
+				---------------
+				--Flags enable
+				c_en <= '0';
+				z_en <= '0';
+				---------------
+				--ALU operation
+				--NONE
+				alu_op0 <= '0';
+				alu_op1 <= '0';
+				---------------
+				--ALU control
+				-- (NONE), (NONE)
+				alu_a_in0 <= '0';
+				alu_a_in1 <= '0';
+				alu_b_in0 <= '1';
+				alu_b_in1 <= '1';
+				---------------
+				--ALU output
+				--alu_pc <= '0';
+				--alu_t1 <= '0';
+				---------------
+				--Register Bank
+				--No register read
+				rf_a1_in0 <='0';
+				rf_a1_in1 <='0';
+				rf_a2_in0 <='0';
+				rf_a2_in1 <='0';
+				--( t1 -> rf_d3 ),( IR(9-11) -> rf_a3 )
+				rf_WR <= '1';
+				rf_a3_in  <='1';
+				rf_d3_in0 <='0';
+				rf_d3_in1 <='0';
+				---------------
+				--Program Counter
+				--(NONE),(NONE)
+				pc_out0 <='0';
+				pc_out1 <='0';
+				--pc_out2 <='0';
+				---------------
+				--Memory Access
+				--(NONE)
+				mem_RD <= '0';
+				mem_WR <= '0';
+				mem_a_dest <= '0'; --Don't care
+				---------------
+				--Priority Encoder
+				pe_en <= '0';
+				---------------
+				--Instr. Register
+				--No ; Other bit is pe_en
+				ir_0 <= '0';
+				---------------
+-------------------------S5-----------------------------
+			when S5 =>
+				--t1 signals
+				--(alu_out -> t1), (t1 -> alu_a)
+				t1_in0  <= '0';
+				t1_in1  <= '1';
+				--t1_out0 <= '0';
+				--t1_out1 <= '1';
+				---------------
+				--t2 signals
+				--NONE, NONE
+				t2_in0  <= '0';
+				t2_in1  <= '0';
+				--t2_out0 <= '0';
+				--t2_out1 <= '0';
+				---------------
+				--Flags enable
+				c_en <= '1';
+				z_en <= '1';
+				---------------
+				--ALU operation
+				--ADD
+				alu_op0 <= '1';
+				alu_op1 <= '1';
+				---------------
+				--ALU control
+				-- (t1 -> alu_a), (SE10 -> alu_b)
+				alu_a_in0 <= '0';
+				alu_a_in1 <= '1';
+				alu_b_in0 <= '1';
+				alu_b_in1 <= '0';
+				---------------
+				--ALU output
+				--alu_pc <= '0';
+				--alu_t1 <= '1';
+				---------------
+				--Register Bank
+				--No register read
+				rf_a1_in0 <='0';
+				rf_a1_in1 <='0';
+				rf_a2_in0 <='0';
+				rf_a2_in1 <='0';
+				-- No register write
+				rf_WR     <='0';
+				rf_a3_in  <='0'; --don't care
+				rf_d3_in0 <='0'; --don't care
+				rf_d3_in1 <='0'; --don't care
+				---------------
+				--Program Counter
+				--(NONE),(NONE)
+				pc_out0 <='0';
+				pc_out1 <='0';
+				--pc_out2 <='0';
+				---------------
+				--Memory Access
+				--(NONE)
+				mem_RD <= '0';
+				mem_WR <= '0';
+				mem_a_dest <= '0'; --Don't care
+				---------------
+				--Priority Encoder
+				pe_en <= '0';
+				---------------
+				--Instr. Register
+				--No ; Other bit is pe_en
+				ir_0 <= '0';
+				---------------
+-------------------------S6-----------------------------
+			when S6 =>
+				--t1 signals
+				--NONE, NONE
+				t1_in0  <= '0';
+				t1_in1  <= '0';
+				--t1_out0 <= '0';
+				--t1_out1 <= '0';
+				---------------
+				--t2 signals
+				--NONE, NONE
+				t2_in0  <= '0';
+				t2_in1  <= '0';
+				--t2_out0 <= '0';
+				--t2_out1 <= '0';
+				---------------
+				--Flags enable
+				c_en <= '0';
+				z_en <= '0';
+				---------------
+				--ALU operation
+				--NONE
+				alu_op0 <= '0';
+				alu_op1 <= '0';
+				---------------
+				--ALU control
+				-- (NONE), (NONE)
+				alu_a_in0 <= '0';
+				alu_a_in1 <= '0';
+				alu_b_in0 <= '1';
+				alu_b_in1 <= '1';
+				---------------
+				--ALU output
+				--alu_pc <= '0';
+				--alu_t1 <= '0';
+				---------------
+				--Register Bank
+				--No register read
+				rf_a1_in0 <='0';
+				rf_a1_in1 <='0';
+				rf_a2_in0 <='0';
+				rf_a2_in1 <='0';
+				--( ZP10 -> rf_d3 ),( IR(9-11) -> rf_a3 )
+				rf_WR <= '1';
+				rf_a3_in  <='1';
+				rf_d3_in0 <='0';
+				rf_d3_in1 <='1';
+				---------------
+				--Program Counter
+				--(NONE),(NONE)
+				pc_out0 <='0';
+				pc_out1 <='0';
+				--pc_out2 <='0';
+				---------------
+				--Memory Access
+				--(NONE)
+				mem_RD <= '0';
+				mem_WR <= '0';
+				mem_a_dest <= '0'; --Don't care
+				---------------
+				--Priority Encoder
+				pe_en <= '0';
+				---------------
+				--Instr. Register
+				--No ; Other bit is pe_en
+				ir_0 <= '0';
+				---------------
+-------------------------S7-----------------------------
+			when S7 =>
+				--t1 signals
+				--NONE, (t1 -> mem_a, alu_a) doesn't matter if goes to alu_a
+				t1_in0  <= '0';
+				t1_in1  <= '0';
+				--t1_out0 <= '1';
+				--t1_out1 <= '1';
+				---------------
+				--t2 signals
+				--(mem_d ->t2), NONE
+				t2_in0  <= '0';
+				t2_in1  <= '1';
+				--t2_out0 <= '0';
+				--t2_out1 <= '0';
+				---------------
+				--Flags enable
+				c_en <= '0';
+				z_en <= '0';
+				---------------
+				--ALU operation
+				--NONE
+				alu_op0 <= '0';
+				alu_op1 <= '0';
+				---------------
+				--ALU control
+				-- (NONE), (NONE)
+				alu_a_in0 <= '0';
+				alu_a_in1 <= '0';
+				alu_b_in0 <= '1';
+				alu_b_in1 <= '1';
+				---------------
+				--ALU output
+				--alu_pc <= '0';
+				--alu_t1 <= '0';
+				---------------
+				--Register Bank
+				--No register read
+				rf_a1_in0 <='0';
+				rf_a1_in1 <='0';
+				rf_a2_in0 <='0';
+				rf_a2_in1 <='0';
+				-- No register write
+				rf_WR     <='0';
+				rf_a3_in  <='0'; --don't care
+				rf_d3_in0 <='0'; --don't care
+				rf_d3_in1 <='0'; --don't care
+				---------------
+				--Program Counter
+				--(NONE),(NONE)
+				pc_out0 <='0';
+				pc_out1 <='0';
+				--pc_out2 <='0';
+				---------------
+				--Memory Access
+				--(mem_d -> t2), (t1 -> mem_a)
+				mem_RD <= '1';
+				mem_WR <= '0';
+				mem_a_dest <= '1'; --Don't care
+				---------------
+				--Priority Encoder
+				pe_en <= '0';
+				---------------
+				--Instr. Register
+				--No ; Other bit is pe_en
+				ir_0 <= '0';
+				---------------
+-------------------------S8-----------------------------
+			when S8 =>
+				--t1 signals
+				--NONE, (t1 -> alu_a)
+				t1_in0  <= '0';
+				t1_in1  <= '0';
+				--t1_out0 <= '0';
+				--t1_out1 <= '1';
+				---------------
+				--t2 signals
+				--NONE, (t2 -> rf-d3)
+				t2_in0  <= '0';
+				t2_in1  <= '0';
+				--t2_out0 <= '1';
+				--t2_out1 <= '0';
+				---------------
+				--Flags enable
+				c_en <= '0';
+				z_en <= '1';
+				---------------
+				--ALU operation
+				--ADD
+				alu_op0 <= '1';
+				alu_op1 <= '1';
+				---------------
+				--ALU control
+				-- (+0 -> alu_a), (t2 -> alu_b)
+				alu_a_in0 <= '1';
+				alu_a_in1 <= '1';
+				alu_b_in0 <= '0';
+				alu_b_in1 <= '1';
+				---------------
+				--ALU output
+				--alu_pc <= '0';
+				--alu_t1 <= '0';
+				---------------
+				--Register Bank
+				--No register read
+				rf_a1_in0 <='0';
+				rf_a1_in1 <='0';
+				rf_a2_in0 <='0';
+				rf_a2_in1 <='0';
+				--(t2 -> rf-d3),( IR(9-11) -> rf_a3 )
+				rf_WR <= '1';
+				rf_a3_in  <='1';
+				rf_d3_in0 <='1';
+				rf_d3_in1 <='0';
+				---------------
+				--Program Counter
+				--(NONE),(NONE)
+				pc_out0 <='0';
+				pc_out1 <='0';
+				--pc_out2 <='0';
+				---------------
+				--Memory Access
+				--(NONE)
+				mem_RD <= '0';
+				mem_WR <= '0';
+				mem_a_dest <= '0'; --Don't care
+				---------------
+				--Priority Encoder
+				pe_en <= '0';
+				---------------
+				--Instr. Register
+				--No ; Other bit is pe_en
+				ir_0 <= '0';
+				---------------
+-------------------------S9-----------------------------
+			when S9 =>
+				--t1 signals
+				--NONE, (t1 -> mem_a, alu_a) doesn't matter if goes to alu_a
+				t1_in0  <= '0';
+				t1_in1  <= '0';
+				--t1_out0 <= '1';
+				--t1_out1 <= '1';
+				---------------
+				--t2 signals
+				--NONE, (t2 -> mem_d)
+				t2_in0  <= '0';
+				t2_in1  <= '0';
+				--t2_out0 <= '1';
+				--t2_out1 <= '1';
+				---------------
+				--Flags enable
+				c_en <= '0';
+				z_en <= '0';
+				---------------
+				--ALU operation
+				--NONE
+				alu_op0 <= '0';
+				alu_op1 <= '0';
+				---------------
+				--ALU control
+				-- (NONE), (NONE)
+				alu_a_in0 <= '0';
+				alu_a_in1 <= '0';
+				alu_b_in0 <= '1';
+				alu_b_in1 <= '1';
+				---------------
+				--ALU output
+				--alu_pc <= '0';
+				--alu_t1 <= '0';
+				---------------
+				--Register Bank
+				--No register read
+				rf_a1_in0 <='0';
+				rf_a1_in1 <='0';
+				rf_a2_in0 <='0';
+				rf_a2_in1 <='0';
+				-- No register write
+				rf_WR     <='0';
+				rf_a3_in  <='0'; --don't care
+				rf_d3_in0 <='0'; --don't care
+				rf_d3_in1 <='0'; --don't care
+				---------------
+				--Program Counter
+				--(NONE),(NONE)
+				pc_out0 <='0';
+				pc_out1 <='0';
+				--pc_out2 <='0';
+				---------------
+				--Memory Access
+				--(t2 -> mem_d), (t1 -> mem_a)
+				mem_RD <= '0';
+				mem_WR <= '1';
+				mem_a_dest <= '1';
+				---------------
+				--Priority Encoder
+				pe_en <= '0';
+				---------------
+				--Instr. Register
+				--No ; Other bit is pe_en
+				ir_0 <= '0';
+				---------------
+-------------------------S10-----------------------------
+			when S10 =>
+				--t1 signals
+				--(alu_out -> t1), (t1 -> mem_a, alu_a) doesn't matter if goes to alu_a
+				t1_in0  <= '0';
+				t1_in1  <= '1';
+				--t1_out0 <= '1';
+				--t1_out1 <= '1';
+				---------------
+				--t2 signals
+				--(mem_d ->t2), NONE
+				t2_in0  <= '0';
+				t2_in1  <= '1';
+				--t2_out0 <= '0';
+				--t2_out1 <= '0';
+				---------------
+				--Flags enable
+				c_en <= '0';
+				z_en <= '0';
+				---------------
+				--ALU operation
+				--ADD
+				alu_op0 <= '1';
+				alu_op1 <= '1';
+				---------------
+				--ALU control
+				-- (t1 -> alu_a), (+1 -> alu_b)
+				alu_a_in0 <= '0';
+				alu_a_in1 <= '1';
+				alu_b_in0 <= '1';
+				alu_b_in1 <= '1';
+				---------------
+				--ALU output
+				--alu_pc <= '0';
+				--alu_t1 <= '1';
+				---------------
+				--Register Bank
+				--No register read
+				rf_a1_in0 <='0';
+				rf_a1_in1 <='0';
+				rf_a2_in0 <='0';
+				rf_a2_in1 <='0';
+				-- No register write
+				rf_WR     <='0';
+				rf_a3_in  <='0'; --don't care
+				rf_d3_in0 <='0'; --don't care
+				rf_d3_in1 <='0'; --don't care
+				---------------
+				--Program Counter
+				--(NONE),(NONE)
+				pc_out0 <='0';
+				pc_out1 <='0';
+				--pc_out2 <='0';
+				---------------
+				--Memory Access
+				--(mem_d -> t2),(t1->mem_a)
+				mem_RD <= '1';
+				mem_WR <= '0';
+				mem_a_dest <= '1';
+				---------------
+				--Priority Encoder
+				pe_en <= '0';
+				---------------
+				--Instr. Register
+				--No ; Other bit is pe_en
+				ir_0 <= '0';
+				---------------
+-------------------------S11-----------------------------
+			when S11 =>
+				--t1 signals
+				--(alu_out -> t1), (t1 -> mem_a, alu_a) doesn't matter if goes to alu_a
+				t1_in0  <= '0';
+				t1_in1  <= '1';
+				--t1_out0 <= '1';
+				--t1_out1 <= '1';
+				---------------
+				--t2 signals
+				--(mem_d ->t2), (t2 -> rf-d3)
+				t2_in0  <= '0';
+				t2_in1  <= '1';
+				--t2_out0 <= '1';
+				--t2_out1 <= '0';
+				---------------
+				--Flags enable
+				c_en <= '0';
+				z_en <= '0';
+				---------------
+				--ALU operation
+				--ADD
+				alu_op0 <= '1';
+				alu_op1 <= '1';
+				---------------
+				--ALU control
+				-- (t1 -> alu_a), (+1 -> alu_b)
+				alu_a_in0 <= '0';
+				alu_a_in1 <= '1';
+				alu_b_in0 <= '1';
+				alu_b_in1 <= '1';
+				---------------
+				--ALU output
+				--alu_pc <= '0';
+				--alu_t1 <= '0';
+				---------------
+				--Register Bank
+				--No register read
+				rf_a1_in0 <='0';
+				rf_a1_in1 <='0';
+				rf_a2_in0 <='0';
+				rf_a2_in1 <='0';
+				--(t2 -> rf-d3),( penc -> rf_a3 )
+				rf_WR <= '1';
+				rf_a3_in  <='0';
+				rf_d3_in0 <='1';
+				rf_d3_in1 <='0';
+				---------------
+				--Program Counter
+				--(NONE),(NONE)
+				pc_out0 <='0';
+				pc_out1 <='0';
+				--pc_out2 <='0';
+				---------------
+				--Memory Access
+				--(mem_d -> t2),(t1->mem_a)
+				mem_RD <= '1';
+				mem_WR <= '0';
+				mem_a_dest <= '1';
+				---------------
+				--Priority Encoder
+				pe_en <= '1';
+				---------------
+				--Instr. Register
+				--No ; Other bit is pe_en
+				ir_0 <= '0';
+				---------------
+-------------------------S12-----------------------------
+			when S12 =>
+				--t1 signals
+				--NONE, NONE
+				t1_in0  <= '0';
+				t1_in1  <= '0';
+				--t1_out0 <= '0';
+				--t1_out1 <= '0';
+				---------------
+				--t2 signals
+				--(rf-d2 ->t2), NONE
+				t2_in0  <= '1';
+				t2_in1  <= '0';
+				--t2_out0 <= '0';
+				--t2_out1 <= '0';
+				---------------
+				--Flags enable
+				c_en <= '0';
+				z_en <= '0';
+				---------------
+				--ALU operation
+				--NONE
+				alu_op0 <= '0';
+				alu_op1 <= '0';
+				---------------
+				--ALU control
+				-- (NONE), (NONE)
+				alu_a_in0 <= '0';
+				alu_a_in1 <= '0';
+				alu_b_in0 <= '1';
+				alu_b_in1 <= '1';
+				---------------
+				--ALU output
+				--alu_pc <= '0';
+				--alu_t1 <= '0';
+				---------------
+				--Register Bank
+				--(NONE), (penc -> rf-a2)
+				rf_a1_in0 <='0';
+				rf_a1_in1 <='0';
+				rf_a2_in0 <='1';
+				rf_a2_in1 <='1';
+				-- No register write
+				rf_WR     <='0';
+				rf_a3_in  <='0'; --don't care
+				rf_d3_in0 <='0'; --don't care
+				rf_d3_in1 <='0'; --don't care
+				---------------
+				--Program Counter
+				--(NONE),(NONE)
+				pc_out0 <='0';
+				pc_out1 <='0';
+				--pc_out2 <='0';
+				---------------
+				--Memory Access
+				--(NONE)
+				mem_RD <= '0';
+				mem_WR <= '0';
+				mem_a_dest <= '0'; --Don't care
+				---------------
+				--Priority Encoder
+				pe_en <= '1';
+				---------------
+				--Instr. Register
+				--No ; Other bit is pe_en
+				ir_0 <= '0';
+				---------------
+-------------------------S13-----------------------------
+			when S13 =>
+				--t1 signals
+				--(alu_out -> t1), (t1 -> alu_a)
+				t1_in0  <= '0';
+				t1_in1  <= '1';
+				--t1_out0 <= '0';
+				--t1_out1 <= '1';
+				---------------
+				--t2 signals
+				--(rf-d2 ->t2), (t2 ->mem_d)
+				t2_in0  <= '1';
+				t2_in1  <= '0';
+				--t2_out0 <= '1';
+				--t2_out1 <= '1';
+				---------------
+				--Flags enable
+				c_en <= '0';
+				z_en <= '0';
+				---------------
+				--ALU operation
+				--ADD
+				alu_op0 <= '1';
+				alu_op1 <= '1';
+				---------------
+				--ALU control
+				-- (t1 -> alu_a), (+1 -> alu_b)
+				alu_a_in0 <= '0';
+				alu_a_in1 <= '1';
+				alu_b_in0 <= '1';
+				alu_b_in1 <= '1';
+				---------------
+				--ALU output
+				--alu_pc <= '0';
+				--alu_t1 <= '0';
+				---------------
+				--Register Bank
+				--(NONE), (penc -> rf-a2)
+				rf_a1_in0 <='0';
+				rf_a1_in1 <='0';
+				rf_a2_in0 <='1';
+				rf_a2_in1 <='1';
+				-- No register write
+				rf_WR     <='0';
+				rf_a3_in  <='0'; --don't care
+				rf_d3_in0 <='0'; --don't care
+				rf_d3_in1 <='0'; --don't care
+				---------------
+				--Program Counter
+				--(NONE),(NONE)
+				pc_out0 <='0';
+				pc_out1 <='0';
+				--pc_out2 <='0';
+				---------------
+				--Memory Access
+				--(t2 -> mem_d),(t1 -> mem_a)
+				mem_RD <= '0';
+				mem_WR <= '1';
+				mem_a_dest <= '1';
+				---------------
+				--Priority Encoder
+				pe_en <= '1';
+				---------------
+				--Instr. Register
+				--No ; Other bit is pe_en
+				ir_0 <= '0';
+				---------------
+-------------------------S14-----------------------------
+			when S14 =>
+				--t1 signals
+				--NONE, (t1 -> alu_a)
+				t1_in0  <= '0';
+				t1_in1  <= '0';
+				--t1_out0 <= '0';
+				--t1_out1 <= '1';
+				---------------
+				--t2 signals
+				--NONE, (t2 -> alu_b)
+				t2_in0  <= '0';
+				t2_in1  <= '0';
+				--t2_out0 <= '0';
+				--t2_out1 <= '1';
+				---------------
+				--Flags enable
+				c_en <= '0';
+				z_en <= '0';
+				---------------
+				--ALU operation
+				--SUB
+				alu_op0 <= '0';
+				alu_op1 <= '1';
+				---------------
+				--ALU control
+				-- (t1 -> alu_a), (t2 -> alu_b)
+				alu_a_in0 <= '0';
+				alu_a_in1 <= '1';
+				alu_b_in0 <= '0';
+				alu_b_in1 <= '1';
+				---------------
+				--ALU output
+				--alu_pc <= '0';
+				--alu_t1 <= '0';
+				---------------
+				--Register Bank
+				--No register read
+				rf_a1_in0 <='0';
+				rf_a1_in1 <='0';
+				rf_a2_in0 <='0';
+				rf_a2_in1 <='0';
+				-- No register write
+				rf_WR     <='0';
+				rf_a3_in  <='0'; --don't care
+				rf_d3_in0 <='0'; --don't care
+				rf_d3_in1 <='0'; --don't care
+				---------------
+				--Program Counter
+				--(NONE),(NONE)
+				pc_out0 <='0';
+				pc_out1 <='0';
+				--pc_out2 <='0';
+				---------------
+				--Memory Access
+				--(NONE)
+				mem_RD <= '0';
+				mem_WR <= '0';
+				mem_a_dest <= '0'; --Don't care
+				---------------
+				--Priority Encoder
+				pe_en <= '0';
+				---------------
+				--Instr. Register
+				--No ; Other bit is pe_en
+				ir_0 <= '0';
+				---------------
+-------------------------S15-----------------------------
+			when S15 =>
+				--t1 signals
+				--NONE, NONE
+				t1_in0  <= '0';
+				t1_in1  <= '0';
+				--t1_out0 <= '0';
+				--t1_out1 <= '0';
+				---------------
+				--t2 signals
+				--NONE, NONE
+				t2_in0  <= '0';
+				t2_in1  <= '0';
+				--t2_out0 <= '0';
+				--t2_out1 <= '0';
+				---------------
+				--Flags enable
+				c_en <= '0';
+				z_en <= '0';
+				---------------
+				--ALU operation
+				--ADD
+				alu_op0 <= '1';
+				alu_op1 <= '1';
+				---------------
+				--ALU control
+				-- (PC -> alu_a), (SE10 -> alu_b)
+				alu_a_in0 <= '1';
+				alu_a_in1 <= '0';
+				alu_b_in0 <= '1';
+				alu_b_in1 <= '0';
+				---------------
+				--ALU output
+				--alu_pc <= '1';
+				--alu_t1 <= '0';
+				---------------
+				--Register Bank
+				--No register read
+				rf_a1_in0 <='0';
+				rf_a1_in1 <='0';
+				rf_a2_in0 <='0';
+				rf_a2_in1 <='0';
+				-- No register write
+				rf_WR     <='0';
+				rf_a3_in  <='0'; --don't care
+				rf_d3_in0 <='0'; --don't care
+				rf_d3_in1 <='0'; --don't care
+				---------------
+				--Program Counter
+				--(PC -> alu_a),(alu_out->PC)
+				pc_out0 <='0';
+				pc_out1 <='1';
+				--pc_out2 <='0';
+				--------------
+				--Memory Access
+				--(NONE)
+				mem_RD <= '0';
+				mem_WR <= '0';
+				mem_a_dest <= '0'; --Don't care
+				---------------
+				--Priority Encoder
+				pe_en <= '0';
+				---------------
+				--Instr. Register
+				--No ; Other bit is pe_en
+				ir_0 <= '0';
+				---------------
+-------------------------S16-----------------------------
+			when S16 =>
+				--t1 signals
+				--NONE, NONE
+				t1_in0  <= '0';
+				t1_in1  <= '0';
+				--t1_out0 <= '0';
+				--t1_out1 <= '0';
+				---------------
+				--t2 signals
+				--NONE, NONE
+				t2_in0  <= '0';
+				t2_in1  <= '0';
+				--t2_out0 <= '0';
+				--t2_out1 <= '0';
+				---------------
+				--Flags enable
+				c_en <= '0';
+				z_en <= '0';
+				---------------
+				--ALU operation
+				--ADD
+				alu_op0 <= '1';
+				alu_op1 <= '1';
+				---------------
+				--ALU control
+				-- (PC -> alu_a), (SE7 -> alu_b)
+				alu_a_in0 <= '1';
+				alu_a_in1 <= '0';
+				alu_b_in0 <= '0';
+				alu_b_in1 <= '0';
+				---------------
+				--ALU output
+				--alu_pc <= '1';
+				--alu_t1 <= '0';
+				---------------
+				--Register Bank
+				--No register read
+				rf_a1_in0 <='0';
+				rf_a1_in1 <='0';
+				rf_a2_in0 <='0';
+				rf_a2_in1 <='0';
+				--(PC -> rf-d3),( IR(9-11) -> rf_a3 )
+				rf_WR <= '1';
+				rf_a3_in  <='1';
+				rf_d3_in0 <='1';
+				rf_d3_in1 <='1';
+				---------------
+				--Program Counter
+				--(PC -> alu_a, rf-d3),(alu_out->PC)
+				pc_out0 <='1';
+				pc_out1 <='1';
+				--pc_out2 <='0';
+				--------------
+				--Memory Access
+				--(NONE)
+				mem_RD <= '0';
+				mem_WR <= '0';
+				mem_a_dest <= '0'; --Don't care
+				---------------
+				--Priority Encoder
+				pe_en <= '0';
+				---------------
+				--Instr. Register
+				--No ; Other bit is pe_en
+				ir_0 <= '0';
+				---------------
+-------------------------S17-----------------------------
+			when S17 =>
+				--t1 signals
+				--NONE, (t1 -> alu_a)
+				t1_in0  <= '0';
+				t1_in1  <= '0';
+				--t1_out0 <= '0';
+				--t1_out1 <= '1';
+				---------------
+				--t2 signals
+				--NONE, NONE
+				t2_in0  <= '0';
+				t2_in1  <= '0';
+				--t2_out0 <= '0';
+				--t2_out1 <= '0';
+				---------------
+				--Flags enable
+				c_en <= '0';
+				z_en <= '0';
+				---------------
+				--ALU operation
+				--ADD
+				alu_op0 <= '1';
+				alu_op1 <= '1';
+				---------------
+				--ALU control
+				-- (NONE), (NONE)
+				alu_a_in0 <= '0';
+				alu_a_in1 <= '0';
+				alu_b_in0 <= '1';
+				alu_b_in1 <= '1';
+				---------------
+				--ALU output
+				--alu_pc <= '0';
+				--alu_t1 <= '0';
+				---------------
+				--Register Bank
+				--No register read
+				rf_a1_in0 <='0';
+				rf_a1_in1 <='0';
+				rf_a2_in0 <='0';
+				rf_a2_in1 <='0';
+				--(PC -> rf-d3),( IR(9-11) -> rf_a3 )
+				rf_WR <= '1';
+				rf_a3_in  <='1';
+				rf_d3_in0 <='1';
+				rf_d3_in1 <='1';
+				---------------
+				--Program Counter
+				--(PC -> rf-d3),(t1->PC)
+				pc_out0 <='1';
+				pc_out1 <='0';
+				--pc_out2 <='0';
+				--------------
+				--Memory Access
+				--(NONE)
+				mem_RD <= '0';
+				mem_WR <= '0';
+				mem_a_dest <= '0'; --Don't care
+				---------------
+				--Priority Encoder
+				pe_en <= '0';
+				---------------
+				--Instr. Register
+				--No ; Other bit is pe_en
+				ir_0 <= '0';
+				---------------
+		end case;
+
+	end process output_logic;
+---------------------------------------------------------
+	next_state_logic: process(clk, current_state, reset, ir, alu_z, carry, zero, nor_ir)
+	begin
+		case current_state is
+-------------------------S0-----------------------------
+			when S0 =>
+				next_state <= S1;
+-------------------------S1-----------------------------
+			when S1 =>
+				next_state <= S2;
+
+-------------------------S2-----------------------------
+--Relevant signals: ir, carry, zero
+			when S2 =>
+--------------------------------------------------------------------------------------------------
+				if (ir(15 downto 12)="0000") or (ir(15 downto 12)="0010") then --Addition or NANDing
+					if (ir(1 downto 0)="00") then --ADD or NDU operations
+						next_state <= S3;
+					elsif (ir(1 downto 0)="10") then --ADC or NDC operations
+						if (carry='1') then
+							next_state <= S3;
+						else
+							next_state <= S1;
+						end if;
+					elsif (ir(1 downto 0)="01") then -- ADZ or NDZ operations
+						if (zero='1') then
+							next_state <= S3;
+						else
+							next_state <= S1;
+						end if;
+					else
+						next_state <= S1; --Error
+					end if;
+---------------------------------------------------------------------------------------------------
+				elsif (ir(15 downto 12)="0001") then --ADI operation
+					next_state <= S5;
+				elsif (ir(15 downto 12)="0011") then --LHI operation
+					next_state <= S6;
+				elsif (ir(15 downto 12)="0110") then --LM operation
+					next_state <= S10;
+				elsif (ir(15 downto 12)="0111") then --SM operation
+					next_state <= S12;
+				elsif (ir(15 downto 12)="1000") then --JAL operation
+					next_state <= S16;
+				elsif (ir(15 downto 12)="1001") then --JALR operation
+					next_state <= S17;
+				else
+					next_state <= S1; --Error
+				end if;
+-------------------------S3-----------------------------
+			when S3 =>
+				next_state <= S4;
+-------------------------S4-----------------------------
+			when S4 =>
+				next_state <= S1;
+-------------------------S5-----------------------------
+--Relevant signals: ir
+			when S5 =>
+				if (ir(15 downto 12)="0001") then
+					next_state <= S4;
+				elsif (ir(15 downto 12)="0100") then
+					next_state <= S7;
+				elsif (ir(15 downto 12)="0101") then
+					next_state <= S9;
+				else
+					next_state <= S1; --Error case
+				end if;
+-------------------------S6-----------------------------
+			when S6 =>
+				next_state <= S1;
+-------------------------S7-----------------------------
+			when S7 =>
+				next_state <= S8;
+-------------------------S8-----------------------------
+			when S8 =>
+				next_state <= S1;
+-------------------------S9-----------------------------
+			when S9 =>
+				next_state <= S1;
+-------------------------S10-----------------------------
+--Relevant signals: nor_ir
+			when S10 =>
+				if (nor_ir='0') then
+					next_state <= S11;
+				else
+					next_state <= S1;
+				end if;
+-------------------------S11-----------------------------
+--Relevant signals: nor_ir
+			when S11 =>
+				if (nor_ir='0') then
+					next_state <= S11;
+				else
+					next_state <= S1;
+				end if;
+-------------------------S12-----------------------------
+--Relevant signals: nor_ir
+			when S12 =>
+				if (nor_ir='0') then
+					next_state <= S13;
+				else
+					next_state <= S1;
+				end if;
+-------------------------S13-----------------------------
+--Relevant signals: nor_ir
+			when S13 =>
+				if (nor_ir='0') then
+					next_state <= S13;
+				else
+					next_state <= S1;
+				end if;
+-------------------------S14-----------------------------
+--Relevant signals: alu_z
+
+			when S14 =>
+				if(alu_z= '0') then
+					next_state <= S1;
+				else
+					next_state <= S15;
+				end if;
+
+-------------------------S15-----------------------------
+			when S15 =>
+				next_state <= S1;
+-------------------------S16-----------------------------
+			when S16 =>
+				next_state <= S1;
+-------------------------S17-----------------------------
+			when S17 =>
+				next_state <= S1;
+		end case;
+
+	end process next_state_logic;
+---------------------------------------------------------
+	update_state: process(clk,reset, ir, nor_ir)--current_state, next_state
+	begin
+		if(clk'event and clk = '1') then
+			if (reset='1') then
+				current_state <=S0;
+			else
+				current_state <= next_state;
+			end if;
+		end if;
+	end process update_state;
+---------------------------------------------------------
+end FSM_prototype;

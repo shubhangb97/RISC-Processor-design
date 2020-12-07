@@ -1,0 +1,220 @@
+# do DUT_run_msim_rtl_vhdl.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim ALTERA vmap 10.4d Lib Mapping Utility 2015.12 Dec 30 2015
+# vmap work rtl_work 
+# Copying /home/shubhang/altera_lite/16.0/modelsim_ase/linuxaloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# 
+# vcom -93 -work work {/home/shubhang/Microprocessors/Simulation/FSM.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 16:39:01 on Nov 27,2018
+# vcom -reportprogress 300 -93 -work work /home/shubhang/Microprocessors/Simulation/FSM.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity FSM
+# -- Compiling architecture FSM_prototype of FSM
+# End time: 16:39:01 on Nov 27,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {/home/shubhang/Microprocessors/Simulation/and_ir.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 16:39:01 on Nov 27,2018
+# vcom -reportprogress 300 -93 -work work /home/shubhang/Microprocessors/Simulation/and_ir.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity and_ir
+# -- Compiling architecture behave of and_ir
+# End time: 16:39:01 on Nov 27,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {/home/shubhang/Microprocessors/Simulation/zp.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 16:39:01 on Nov 27,2018
+# vcom -reportprogress 300 -93 -work work /home/shubhang/Microprocessors/Simulation/zp.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity zp
+# -- Compiling architecture behave of zp
+# End time: 16:39:01 on Nov 27,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {/home/shubhang/Microprocessors/Simulation/SE10.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 16:39:01 on Nov 27,2018
+# vcom -reportprogress 300 -93 -work work /home/shubhang/Microprocessors/Simulation/SE10.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity SE10
+# -- Compiling architecture behave of SE10
+# End time: 16:39:01 on Nov 27,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {/home/shubhang/Microprocessors/Simulation/RegisterBank.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 16:39:01 on Nov 27,2018
+# vcom -reportprogress 300 -93 -work work /home/shubhang/Microprocessors/Simulation/RegisterBank.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity RegisterBank
+# -- Compiling architecture behaveReg of RegisterBank
+# End time: 16:39:01 on Nov 27,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {/home/shubhang/Microprocessors/Simulation/instr_reg.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 16:39:01 on Nov 27,2018
+# vcom -reportprogress 300 -93 -work work /home/shubhang/Microprocessors/Simulation/instr_reg.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity instr_reg
+# -- Compiling architecture behave of instr_reg
+# End time: 16:39:01 on Nov 27,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {/home/shubhang/Microprocessors/Simulation/mem.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 16:39:01 on Nov 27,2018
+# vcom -reportprogress 300 -93 -work work /home/shubhang/Microprocessors/Simulation/mem.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity mem
+# -- Compiling architecture mem_prototype of mem
+# End time: 16:39:02 on Nov 27,2018, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {/home/shubhang/Microprocessors/Simulation/DUT.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 16:39:02 on Nov 27,2018
+# vcom -reportprogress 300 -93 -work work /home/shubhang/Microprocessors/Simulation/DUT.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity DUT
+# -- Compiling architecture DutWrap of DUT
+# End time: 16:39:02 on Nov 27,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {/home/shubhang/Microprocessors/Simulation/SE7.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 16:39:02 on Nov 27,2018
+# vcom -reportprogress 300 -93 -work work /home/shubhang/Microprocessors/Simulation/SE7.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity SE7
+# -- Compiling architecture behave of SE7
+# End time: 16:39:02 on Nov 27,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {/home/shubhang/Microprocessors/Simulation/penc.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 16:39:02 on Nov 27,2018
+# vcom -reportprogress 300 -93 -work work /home/shubhang/Microprocessors/Simulation/penc.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity penc
+# -- Compiling architecture behave of penc
+# End time: 16:39:02 on Nov 27,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {/home/shubhang/Microprocessors/Simulation/t2.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 16:39:02 on Nov 27,2018
+# vcom -reportprogress 300 -93 -work work /home/shubhang/Microprocessors/Simulation/t2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity t2
+# -- Compiling architecture behave of t2
+# End time: 16:39:02 on Nov 27,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {/home/shubhang/Microprocessors/Simulation/t1.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 16:39:02 on Nov 27,2018
+# vcom -reportprogress 300 -93 -work work /home/shubhang/Microprocessors/Simulation/t1.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity t1
+# -- Compiling architecture behave of t1
+# End time: 16:39:02 on Nov 27,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {/home/shubhang/Microprocessors/Simulation/ALU.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 16:39:02 on Nov 27,2018
+# vcom -reportprogress 300 -93 -work work /home/shubhang/Microprocessors/Simulation/ALU.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity ALU
+# -- Compiling architecture Flames of ALU
+# End time: 16:39:02 on Nov 27,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# 
+# stdin: <EOF>
+vsim work.dut
+# vsim work.dut 
+# Start time: 16:39:06 on Nov 27,2018
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.dut(dutwrap)
+# Loading work.fsm(fsm_prototype)
+# Loading work.alu(flames)
+# Loading work.and_ir(behave)
+# Loading work.instr_reg(behave)
+# Loading work.mem(mem_prototype)
+# Loading work.penc(behave)
+# Loading work.registerbank(behavereg)
+# Loading work.se7(behave)
+# Loading work.se10(behave)
+# Loading work.t1(behave)
+# Loading work.t2(behave)
+# Loading work.zp(behave)
+add wave -position insertpoint  \
+sim:/dut/clk
+add wave -position insertpoint  \
+sim:/dut/pc_direct_out \
+sim:/dut/r0_out \
+sim:/dut/r1_out \
+sim:/dut/r2_out \
+sim:/dut/r5_out
+force -freeze sim:/dut/clk 1 0, 0 {50 ps} -r 100
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /dut/a6
+# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
+#    Time: 0 ps  Iteration: 0  Instance: /dut/a1
+# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
+#    Time: 0 ps  Iteration: 0  Instance: /dut
+# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
+#    Time: 0 ps  Iteration: 1  Instance: /dut/a1
+# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
+#    Time: 0 ps  Iteration: 1  Instance: /dut
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
