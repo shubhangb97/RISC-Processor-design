@@ -8,6 +8,6 @@
 
 
 ## **Project**
-This project is a VHDL implementation of the RISC processors based on the IITB-RISC ISA. It contains-
-- Multicycle RISC implementation
-- Pipelined RISC implementation
+This project is a design and implementation of a RISC processor based on the IITB-RISC ISA (Instruction Set Architecture) . It contains-
+- Multicycle RISC processor
+- Pipelined RISC processor
